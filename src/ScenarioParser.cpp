@@ -8,6 +8,13 @@ struct Scenario {
 };
 
 ScenarioParser::ScenarioParser(std::string filename) {
-  _filename = filename;
-  std::cout << "The name of the file: " << filename << "\n";
+  if (filename != "") {
+      _filename = filename;
+      std::cout << "The name of the file: " << filename << "\n";
+  }
+
+  std::ifstream f(_filename);
+  if (!f.is_open()) {
+    std::cerr << "Could not open the file: " << _filename << "\n";
+  }
 }
