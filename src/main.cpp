@@ -23,7 +23,7 @@ int main() {
       std::cout << my_scenario->getId() << "\n";
       std::string pcapLocation = "/home/workspace/CppND-Capstone-PcapTool/pcaps/" + my_scenario->getPcapName();
       PcapReader p_reader(pcapLocation);
-      //p_reader.readPackets();
+      p_reader.readPackets();
     }
     
 //     pcpp::IFileReaderDevice* reader = pcpp::IFileReaderDevice::getReader("1_http_packet.pcap");
@@ -111,6 +111,5 @@ int main() {
 //     writer.writePacket(*(parsedPacket.getRawPacket()));
 //     writer.close();
 
-  
     return 0;
 }

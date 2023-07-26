@@ -34,6 +34,7 @@ void ScenarioParser::showAllScenarios() {
   }
 }
 
+
 const std::vector<std::unique_ptr<Scenario>> &ScenarioParser::getScenarios() const{
   return m_ScenarioList;
 }
@@ -47,4 +48,5 @@ void ScenarioParser::setConfigFile(const std::string& filename) {
 }
 
 std::string ScenarioParser::getConfigFile() { return m_Filename; }
+
 
