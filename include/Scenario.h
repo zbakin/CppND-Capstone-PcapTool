@@ -1,0 +1,24 @@
+#ifndef SCENARIO
+#define SCENARIO
+#include <string>
+
+class Scenario {
+public:
+  int getId();
+  std::string getPcapName();
+  std::string getCommand();
+  std::string getValue();
+  
+  void setId(int id);
+  void setPcapName(std::string pcapName);
+  void setCommand(std::string command);
+  void setValue(std::string value);
+  
+private:
+  int m_Id;
+  std::string m_Command;
+  std::string m_PcapName;
+  std::string m_Value;
+};
+
+#endif /* SCENARIO */
