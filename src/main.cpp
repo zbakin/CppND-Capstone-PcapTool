@@ -1,31 +1,45 @@
 #include <iostream>
+#include <cstdlib>
 #include "ScenarioParser.h"
 #include "PcapReader.h"
-// #include "SystemUtils.h"
-// #include "Packet.h"
-// #include "EthLayer.h"
-// #include "VlanLayer.h"
-// #include "IPv4Layer.h"
-// #include "TcpLayer.h"
-// #include "HttpLayer.h"
-// #include "UdpLayer.h"
-// #include "DnsLayer.h"
-// #include "PcapFileDevice.h"
 
-int main() {
-    std::string filepath = "/home/workspace/CppND-Capstone-PcapTool/scenarios/scenario1.csv";
+int main(int argc, char *argv[]){
+    // Check for arguments
+    if (argc < 3) {
+      std::cout << "Usage:\n       ./PcapTool [scenario file name] [packet number]\n";
+      return 0;
+    }
+    const size_t packetNum = atoi(argv[2]);
+    /*
+     ****
+     ************* PARSING OF SCENARIO FILE ****************
+     ****
+    */
+
+    std::string filepath = "/home/workspace/CppND-Capstone-PcapTool/scenarios/";
+    std::string argv1(argv[1]);
+    filepath = filepath.append(argv1);
+
     ScenarioParser parser(filepath);
     parser.parse();
     parser.showAllScenarios();
-    const auto& my_vec = parser.getScenarios();
+    const auto& parsedScenarios = parser.getScenarios();
   
-    for (const auto& my_scenario : my_vec) {
-      std::cout << my_scenario->getId() << "\n";
-      std::string pcapLocation = "/home/workspace/CppND-Capstone-PcapTool/pcaps/" + my_scenario->getPcapName();
+    /*
+     ****
+     ************* Looping through vector of Scenarios ****************
+     ****
+    */
+    for (const auto& scenario : parsedScenarios) {
+      std::cout << scenario->getId() << "\n";
+      std::string pcapLocation = "/home/workspace/CppND-Capstone-PcapTool/pcaps/" + scenario->getPcapName();
       PcapReader p_reader(pcapLocation);
       p_reader.readPackets();
+//       std::unique_ptr<pcpp::Packet> pac1 = std::move(p_reader.getPackets()[packetNum]);
+//       pcpp::EthLayer* ethernetLayer = pac1.get()->getLayerOfType<pcpp::EthLayer>();
+//       // change the source dest MAC address
+//       std::cout << "Ethernet: " << ethernetLayer->getDestMac() << "\n";
     }
-    
 //     pcpp::IFileReaderDevice* reader = pcpp::IFileReaderDevice::getReader("1_http_packet.pcap");
     
 //     	// verify that a reader interface was indeed created
@@ -63,14 +77,14 @@ int main() {
 //     // change the source dest MAC address
 //     ethernetLayer->setDestMac(pcpp::MacAddress("aa:bb:cc:dd:ee:ff"));
 
-//     // let's get the IPv4 layer
-//     pcpp::IPv4Layer* ipLayer = parsedPacket.getLayerOfType<pcpp::IPv4Layer>();
-//     // change source IP address
-//     ipLayer->setSrcIPv4Address(pcpp::IPv4Address("1.2.3.4"));
-//     // change IP ID
-//     ipLayer->getIPv4Header()->ipId = pcpp::hostToNet16(4000);
-//     // change TTL value
-//     ipLayer->getIPv4Header()->timeToLive = 12;
+// //     // let's get the IPv4 layer
+//    //  pcpp::IPv4Layer* ipLayer = parsedPacket.getLayerOfType<pcpp::IPv4Layer>();
+//     ////  change source IP address
+//     ipLay// er->setSrcIPv4Address(pcpp::IPv4Address("1.2.3.4"));
+//     // chang// e IP ID
+//     ipLayer->ge// tIPv4Header()->ipId = pcpp::hostToNet16(4000);
+//     // change TTL // value
+//     ipLayer->getIPv4H// eader()->timeToLive = 12;
 
 //     // let's get the TCP layer
 //     pcpp::TcpLayer* tcpLayer = parsedPacket.getLayerOfType<pcpp::TcpLayer>();

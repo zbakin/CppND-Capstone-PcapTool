@@ -15,11 +15,16 @@
 #include "DnsLayer.h"
 #include "PcapFileDevice.h"
 
-class PcapModifier {
+class PacketModifier {
 public:
-    PcapModifier(const std::string& filename) : pcapHandle(nullptr) {}
-    ~PcapModifier() {}
+    PacketModifier(const pcpp::Packet &packet) : m_Packet(packet) {}
+    ~PacketModifier() {}
+
+    void changeSourceIp();
+    void updateDestinationIp();
+
 private:
+    pcpp::Packet m_Packet;
 };
 
 #endif /* PCAP_MODIFIER */

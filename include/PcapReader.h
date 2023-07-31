@@ -18,7 +18,7 @@
 class PcapReader {
 public:
     PcapReader(const std::string& filename) : /*m_PcapHandle(nullptr),*/ m_PcapName(filename) {}
-  
+
     ~PcapReader() {
 //         if (m_PcapHandle != nullptr) {
 //             // close the file handle
@@ -29,6 +29,9 @@ public:
 //     Packet readPacketById();
 //     std::vector<std::unique<Packet>> readPackets();
     void readPackets();
+  
+    // getters
+    std::vector<std::unique_ptr<pcpp::Packet>> getPackets();
 private:
     std::string m_PcapName;
 //     std::unique_ptr<pcpp::IFileReaderDevice> m_PcapHandle;

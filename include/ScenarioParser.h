@@ -7,10 +7,17 @@
 #include <vector>
 #include "Scenario.h"
 
+
 class ScenarioParser : public Scenario {
 public:
   ScenarioParser() : m_Filename("") {}
-  ScenarioParser(const std::string& filename) : m_Filename(filename) {}
+  ScenarioParser(const std::string& filename) : m_Filename(filename) {
+    // Report if the file doesn't exist
+    std::ifstream f(m_Filename.c_str());
+    if (!f.good()) {
+        std::cerr << "File: " << m_Filename << " is not present\n";
+    }
+  }
   // TODO: copy constructor
   // ScenarioParser(const &ScenarioParser otherReader) {}
   
