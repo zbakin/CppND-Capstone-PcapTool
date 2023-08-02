@@ -34,7 +34,7 @@ public:
   void showAllScenarios();
   
   // getters
-  const std::vector<std::unique_ptr<Scenario>> &getScenarios() const;
+  const std::vector<std::unique_ptr<Scenario>>& getScenarios() const;
   std::string getConfigFile();
   
   // setters

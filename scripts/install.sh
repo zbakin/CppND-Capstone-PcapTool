@@ -11,7 +11,7 @@ git config --global user.name "Zhanibek Bakin"
 
 
 ################### INSTALL VCPKG and PCAPPLUSPLUS ###############
-cd $WORKSPACE
+# cd $WORKSPACE
 # git clone https://github.com/microsoft/vcpkg
 # cd $WORKSPACE/vcpkg
 # ./bootstrap-vcpkg.sh

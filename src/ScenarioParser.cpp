@@ -9,17 +9,19 @@ void ScenarioParser::parse() {
   std::ifstream filestream(m_Filename);
   if (filestream.is_open()) {
     std::string line;
-    std::string word, word2, word3, word4;
+    std::string id, pcapName, packetNum, command, value;
     while(std::getline(filestream, line)) {
       std::istringstream line_stream(line);
       std::unique_ptr<Scenario> scenarioHolder = std::make_unique<Scenario>();
       // Use structured bindings to directly assign values
-      if (std::getline(line_stream, word, ',') && std::getline(line_stream, word2, ',') &&
-          std::getline(line_stream, word3, ',') && std::getline(line_stream, word4, ',')) {
-          scenarioHolder->setId(std::stoi(word));
-          scenarioHolder->setPcapName(word2);
-          scenarioHolder->setCommand(word3);
-          scenarioHolder->setValue(word4);
+      if (std::getline(line_stream, id, ',') && std::getline(line_stream, pcapName, ',') &&
+          std::getline(line_stream, packetNum, ',') && std::getline(line_stream, command, ',') &&
+          std::getline(line_stream, value, ',')) {
+          scenarioHolder->setId(std::stoi(id));
+          scenarioHolder->setPcapName(pcapName);
+          scenarioHolder->setPacketNum(std::stoi(packetNum));
+          scenarioHolder->setCommand(command);
+          scenarioHolder->setValue(value);
           m_ScenarioList.emplace_back(std::move(scenarioHolder));
       }
     }
@@ -35,12 +37,11 @@ void ScenarioParser::showAllScenarios() {
   }
   std::cout << "************** List of Parsed Scenarios **************\n";
   for(const auto &scenario : m_ScenarioList) {
-    std::cout << "ID: " << scenario->getId() << "  pcapName: " << scenario->getPcapName() << "  command: " << scenario->getCommand() << "  value: " << scenario->getValue() << "\n";
+    std::cout << "ID: " << scenario->getId() << "  pcapName: " << scenario->getPcapName() << "   packetNum: " << scenario->getPacketNum() << "  command: " << scenario->getCommand() << "  value: " << scenario->getValue() << "\n";
   }
 }
 
-
-const std::vector<std::unique_ptr<Scenario>> &ScenarioParser::getScenarios() const{
+const std::vector<std::unique_ptr<Scenario>>& ScenarioParser::getScenarios() const {
   return m_ScenarioList;
 }
 

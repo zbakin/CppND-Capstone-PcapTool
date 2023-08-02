@@ -17,25 +17,17 @@
 
 class PcapReader {
 public:
-    PcapReader(const std::string& filename) : /*m_PcapHandle(nullptr),*/ m_PcapName(filename) {}
+    PcapReader(const std::string& filename) : m_PcapName(filename) {}
+    ~PcapReader() {}
 
-    ~PcapReader() {
-//         if (m_PcapHandle != nullptr) {
-//             // close the file handle
-//             m_PcapHandle->close();
-//             m_PcapHandle = nullptr;
-//         }
-    }
-//     Packet readPacketById();
-//     std::vector<std::unique<Packet>> readPackets();
     void readPackets();
   
     // getters
-    std::vector<std::unique_ptr<pcpp::Packet>> getPackets();
+    std::vector<pcpp::Packet> getPackets();
+    void printPackets();
 private:
     std::string m_PcapName;
-//     std::unique_ptr<pcpp::IFileReaderDevice> m_PcapHandle;
-    std::vector<std::unique_ptr<pcpp::Packet>> m_Packets;
+    std::vector<pcpp::Packet> m_Packets;
 };
 
 #endif /* PCAP_READER */

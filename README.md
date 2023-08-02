@@ -4,7 +4,15 @@ This is a repo for the Capstone project in the [Udacity C++ Nanodegree Program](
 
 The Capstone Project gives a chance to integrate what's been learned throughout this program.
 
-In this project, you can build your own C++ application starting with this repo, following the principles you have learned throughout this Nanodegree Program. This project will demonstrate that you can independently create applications using a wide range of C++ features.
+In this project, a custom C++ application was created, following the principles that have been learned throughout this Nanodegree Program.
+
+PcapTool - application which allows users to update pcap file, based on specific commands. Pcap file is a file, that is captured via tcpdump or similar tools, and contains structured information about comminication between IP protocol supported devices.
+
+## Design and implementation
+Classes Scenario, ScenarioParser, ScenarioProcessor, PcapReader were implemented to capture both the scenario file and pcap file, in order to do manipulations on pcap file. 
+
+Libraries which simplified the implementation are: libpcap and pcapplusplus. Both of the libraries are available open source and do not need a license.
+
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
@@ -35,7 +43,8 @@ In this project, you can build your own C++ application starting with this repo,
 3. `cd build`
 4. `cmake .. && make`
 
-
 ## Run app
 
-1. `./PcapTool <scenario file name> <packet number>`.
+1. `./PcapTool <path to scenario file>`.
+For example, `./PcapTool ../scenarios/scenario1.csv`. 
+
