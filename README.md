@@ -48,3 +48,9 @@ Libraries which simplified the implementation are: libpcap and pcapplusplus. Bot
 1. `./PcapTool <path to scenario file>`.
 For example, `./PcapTool ../scenarios/scenario1.csv`. 
 
+## Project Submission Rubric
+
+1. The project demonstrates an understanding of C++ functions and control structures. This is demonstrated throughout the project on all classes.
+2. The project reads data from a file and process the data, or the program writes data to a file. This can be found in files src/ScenarioParser.cpp:9 and src/ScenarioProcessor.cpp:64
+3. The project uses Object Oriented Programming techniques. There are classes such as Scenario, ScenarioParser, ScenarioProcessor, PcapReader. They have private attributes and public methods.
+4. Classes use appropriate access specifiers for class members.
