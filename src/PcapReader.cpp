@@ -23,10 +23,8 @@ void PcapReader::readPackets() {
         m_Packets.emplace_back(parsedPacket);
     }
     pcapHandle->close();
+    std::cout << "\n\nIn total read " << m_Packets.size() << " packets.\n\n";
 }
-
-// TODO:
-void printPackets() {}
 
 std::vector<pcpp::Packet> PcapReader::getPackets() { return m_Packets; }
 

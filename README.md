@@ -48,9 +48,30 @@ Libraries which simplified the implementation are: libpcap and pcapplusplus. Bot
 1. `./PcapTool <path to scenario file>`.
 For example, `./PcapTool ../scenarios/scenario1.csv`. 
 
+## Scenario usage
+
+`Scenario Index`,`Pcap file location and name`,`Packet number of interest`,`Command`,`Value`
+
+Examples:
+`01,../pcaps/many-protocols.pcap,4709,change_source_ip,8.8.8.8`
+`02,../pcaps/modified_packets.pcap,4709,display_packet_info,0`
+`03,../pcaps/modified_packets.pcap,35,display_packet_info,0`
+
+Commands available:
+`change_source_ip` - change source ip of IPv4 packet
+`change_destination_ip` - change destination ip of IPv4 packet
+`display_packet_info` - display IPv4 information
+
+## Future work
+
+This project is highly modular and commands can easily be added in ScenarioProcessor.cpp.
+Future possible command - `change_src_mac_address`, `change_dst_mac_address`, `change_payload_data` etc...
+
 ## Project Submission Rubric
 
 1. The project demonstrates an understanding of C++ functions and control structures. This is demonstrated throughout the project on all classes.
 2. The project reads data from a file and process the data, or the program writes data to a file. This can be found in files src/ScenarioParser.cpp:9 and src/ScenarioProcessor.cpp:64
-3. The project uses Object Oriented Programming techniques. There are classes such as Scenario, ScenarioParser, ScenarioProcessor, PcapReader. They have private attributes and public methods.
-4. Classes use appropriate access specifiers for class members.
+3. The project uses Object Oriented Programming techniques. There are classes such as Scenario, ScenarioParser, ScenarioProcessor, PcapReader. 
+4. Classes use appropriate access specifiers for class members. All classes in this tool have private attributes and public methods.
+5. The project makes use of references in function declarations. For example, look at ScenarioParser.cpp:48 and ScenarioParser.h:22
+6. The project uses smart pointers instead of raw pointers. The project does not use raw pointers. The project uses a smart pointer: unique_ptr. Check - ScenarioParser.h:58.

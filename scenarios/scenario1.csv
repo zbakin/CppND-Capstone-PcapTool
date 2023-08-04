@@ -1,2 +1,3 @@
-01,1_http_packet.pcap,0,change_source_ip,1.2.3.4
-02,1_http_packet.pcap,0,change_destination_ip,8.8.8.8
+01,../pcaps/many-protocols.pcap,35,change_source_ip,1.1.1.1
+02,../pcaps/modified_packets.pcap,35,change_destination_ip,2.3.4.5
+03,../pcaps/modified_packets.pcap,35,display_packet_info,0

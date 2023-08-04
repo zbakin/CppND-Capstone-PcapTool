@@ -1,2 +1,3 @@
-01,/home/workspace/CppND-Capstone-PcapTool/pcaps/UDP1.pcap,83424,change_source_ip,1.2.3.4
-01,/home/workspace/CppND-Capstone-PcapTool/pcaps/UDP1.pcap,83424,change_destination_ip,8.8.8.8
+01,../pcaps/many-protocols.pcap,4709,change_source_ip,8.8.8.8
+02,../pcaps/modified_packets.pcap,4709,display_packet_info,0
+03,../pcaps/modified_packets.pcap,35,y_packet_info,0
