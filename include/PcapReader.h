@@ -21,7 +21,7 @@ public:
     ~PcapReader() {}
 
     void readPackets();
-  
+
     // getters
     std::vector<pcpp::Packet> getPackets();
     void printPackets();

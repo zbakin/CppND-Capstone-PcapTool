@@ -25,7 +25,5 @@ int main(int argc, char *argv[]){
      ****
     */
     sProcessor.processScenarios();
-
-
     return 0;
 }

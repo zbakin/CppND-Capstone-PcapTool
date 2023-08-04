@@ -1,1 +1,2 @@
-01,../pcaps/many-protocols.pcap,0,change_source_ip,1.1.1.1
+01,../pcaps/many-protocols.pcap,4708,change_source_ip,1.1.1.1
+02,../pcaps/many-protocols.pcap,4708,change_destination_ip,1.1.1.1

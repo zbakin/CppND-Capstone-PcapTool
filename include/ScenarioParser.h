@@ -20,23 +20,23 @@ public:
   }
   // TODO: copy constructor
   // ScenarioParser(const &ScenarioParser otherReader) {}
-  
+
   // TODO: copy assignment operator
   // operator=(const ScenarioParser otherReader) {} 
   // TODO: destructor
   //~ScenarioParser();
-  
+
   // TODO: maybe add move constructor
   // TODO: maybe add move assignment operator
   void parse();
-  
+
   // Printing methods
   void showAllScenarios();
-  
+
   // getters
   const std::vector<std::unique_ptr<Scenario>>& getScenarios() const;
   std::string getConfigFile();
-  
+
   // setters
   void setConfigFile(const std::string& filename);
 private:

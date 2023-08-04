@@ -18,15 +18,16 @@ public:
       m_Parser->showAllScenarios();
   }
   // getters
+  const std::vector<pcpp::Packet>& getProcessedPackets();
 
   void processScenarios();
   // functions to manipulate packets
   void changeDstIp(pcpp::Packet& packet, const std::string& value);
   void changeSrcIp(pcpp::Packet& packet, const std::string& value);
-  void displayPacketInto(pcpp::Packet& packet);
-  void displayPackets();
+  void displayPacketsInfo(const std::vector<pcpp::Packet>& packets);
+
   // method to save packets into a new pcap file
-  void saveToPcap(std::vector<pcpp::Packet> finalPackets);
+  void saveToPcap(const std::vector<pcpp::Packet>& finalPackets);
 private:
 //   std::unordered_map<std::string, int> m_Map;
   std::vector<pcpp::Packet> m_PacketsToProcess;

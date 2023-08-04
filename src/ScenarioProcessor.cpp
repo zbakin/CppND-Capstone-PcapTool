@@ -9,28 +9,22 @@ void ScenarioProcessor::processScenarios() {
          m_PcapReader->readPackets();
          m_PacketsToProcess = m_PcapReader->getPackets();
          std::cout << "Packets read: " << m_PacketsToProcess.size() << "\n"; 
-         pcpp::Packet& packetToChange = m_PacketsToProcess[scenario->getPacketNum()];
+         m_ProcessedPackets = m_PacketsToProcess;
+         pcpp::Packet& packetToChange = m_ProcessedPackets[scenario->getPacketNum()];
          if(scenario->getCommand() == "change_source_ip") {
              changeSrcIp(packetToChange, scenario->getValue());
          } else if(scenario->getCommand() == "change_destination_ip") {
              changeDstIp(packetToChange, scenario->getValue());
-         } 
+         }
          // Here we can add more command variations with else if
          else {
              std::cerr << "Unknown command provided in the scenario: " << scenario->getId() << "\n";
          }
-         std::cout << "Total packets: " << m_PacketsToProcess.size() << "\n";
-      
-         // Print All packets
-         for (const auto& packet : m_PacketsToProcess)
-         {
-             pcpp::IPv4Layer* ipLayer = packet.getLayerOfType<pcpp::IPv4Layer>();
-             if (ipLayer != nullptr) {
-                 std::cout << "New source IP: " << ipLayer->getSrcIPv4Address() << "\n";
-                 std::cout << "New destination IP: " << ipLayer->getDstIPv4Address() << "\n";
-             }
-         }
-     }
+         displayPacketsInfo(m_ProcessedPackets);
+         std::cout << "Total packets: " << m_ProcessedPackets.size() << "\n";
+    }
+    // Save modified packets to a pcap file
+    saveToPcap(m_ProcessedPackets);
 }
 
 void ScenarioProcessor::changeSrcIp(pcpp::Packet& packet, const std::string& value) {
@@ -51,10 +45,34 @@ void ScenarioProcessor::changeDstIp(pcpp::Packet& packet, const std::string& val
     }
 }
 
-void displayPacketInto(pcpp::Packet& packet) {
-  
+void ScenarioProcessor::displayPacketsInfo(const std::vector<pcpp::Packet>& packets) {
+    unsigned int packetCount = 0;
+    // Print each packet SRC and DST IPs
+    for (const auto& packet : packets)
+    {
+        std::cout << "Packet index: " << packetCount << std::endl;
+        pcpp::IPv4Layer* ipLayer = packet.getLayerOfType<pcpp::IPv4Layer>();
+        if (ipLayer != nullptr) {
+            std::cout << std::endl
+            << "Source IP address: " << ipLayer->getSrcIPAddress() << std::endl
+            << "Destination IP address: " << ipLayer->getDstIPAddress() << std::endl
+            << "IP ID: 0x" << std::hex << pcpp::netToHost16(ipLayer->getIPv4Header()->ipId) << std::endl
+            << "TTL: " << std::dec << (int)ipLayer->getIPv4Header()->timeToLive << std::endl;
+        }
+        ++packetCount;
+    }
 }
 
-void ScenarioProcessor::displayPackets() {
-  
+const std::vector<pcpp::Packet>& ScenarioProcessor::getProcessedPackets() {
+    return m_ProcessedPackets;
+}
+
+void ScenarioProcessor::saveToPcap(const std::vector<pcpp::Packet>& finalPackets) {
+    // write the modified packet to a pcap file
+    pcpp::PcapFileWriterDevice writer("modified_packets.pcap");
+    writer.open();
+    for (const auto& packet : finalPackets) {
+        writer.writePacket(*(packet.getRawPacket()));
+    }
+    writer.close();
 }
