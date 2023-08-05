@@ -83,6 +83,35 @@ Commands available:
 `change_destination_ip` - change destination ip of IPv4 packet
 `display_packet_info` - display IPv4 information
 
+
+## Outputs to expect
+
+Once you build and run the application, the output would be modified_packets.cpp file and console output
+would show scenarios ran:
+
+```
+****************** RUNNING SCENARIO NUMBER 2 *********************
+
+
+In total read 4709 packets.
+
+**Successfully changed the destination ip of IP packet to : 2.3.4.5
+
+Packet were saved to modified_packets.pcap!
+
+****************** RUNNING SCENARIO NUMBER 3 *********************
+
+
+In total read 4709 packets.
+
+
+PRINTING PACKET 35
+Source IP address: 1.1.1.1
+Destination IP address: 2.3.4.5
+IP ID: 0x646a
+TTL: 128
+```
+
 ## Future work
 
 This project is highly modular and commands can easily be added in ScenarioProcessor.cpp.
