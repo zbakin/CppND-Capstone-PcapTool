@@ -50,19 +50,12 @@ Build PcapPlusPlus from sources
 `https://pcapplusplus.github.io/docs/v21.11/install/vs`
 `https://pcapplusplus.github.io/docs/next/install/mingw`
 
-## Basic Build Instructions from clean installation
+## Basic Build Instructions
 
 1. Clone this repo.
 2. From the top level directory run: `./scripts/clean_install.sh` to install dependancies such as libpcap and PcapPlusPlus libraries. Make sure to wait until the end of installation - about 10 min.
 3. Make a build directory in the top level directory: `mkdir build && cd build`
 4. Compile: `cmake .. && make`
-
-## Basic Build Instructions from my Udacity workspace
-
-1. `cd CppND-Capstone-PcapTool`
-2. `./scripts/install.sh` to install dependancies such as libpcap and PcapPlusPlus libraries. 
-3. `cd build`
-4. `cmake .. && make`
 
 ## Run app
 
