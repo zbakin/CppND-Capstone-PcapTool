@@ -13,6 +13,17 @@ Classes Scenario, ScenarioParser, ScenarioProcessor, PcapReader were implemented
 
 Libraries which simplified the implementation are: libpcap and pcapplusplus. Both of the libraries are available open source and do not need a license.
 
+## Use cases for PcapTool
+
+1. Network Traffic Analysis: By modifying pcap files, one can manipulate the captured network traffic to simulate different scenarios or test the behavior of network applications.
+
+2. Security Research: PcapTool could service in security research to analyze network traffic for detecting and investigating security threats. By modifying pcap files, it's possible to simulate different attack scenarios, test the effectiveness of security measures, or create custom datasets for machine learning-based security analysis.
+
+3. Protocol Development and Testing: when developing or testing network protocols, modifying pcap files can be useful for simulating specific network conditions or generating custom test scenarios. This allows evaluating the behavior of a protocol implementation under different network conditions.
+
+4. Traffic Generation: By tweaking pcap files, one can generate custom network traffic patterns for various purposes, such as load testing network infrastructure, evaluating the performance of network devices, or simulating specific application behaviors.
+
+5. Trading Analysis: Pcap application can also be used to analyze network traffic related to trading activities. By capturing and analyzing network packets, financial institutions can gain insights into the performance and latency of trading systems, identify any issues that may impact trade execution, and optimize trading strategies.
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
@@ -28,6 +39,16 @@ Libraries which simplified the implementation are: libpcap and pcapplusplus. Bot
 * libpcap >= 1.7.4-2
 * PcapPlusPlus >= v22.11
 * vcpkg
+
+## Install on Mac
+Install libpcap
+`brew install libpcap`
+Build PcapPlusPlus from sources
+`https://pcapplusplus.github.io/docs/install/macos`
+
+## Install on Windows
+`https://pcapplusplus.github.io/docs/v21.11/install/vs`
+`https://pcapplusplus.github.io/docs/next/install/mingw`
 
 ## Basic Build Instructions from clean installation
 
@@ -75,3 +96,10 @@ Future possible command - `change_src_mac_address`, `change_dst_mac_address`, `c
 4. Classes use appropriate access specifiers for class members. All classes in this tool have private attributes and public methods.
 5. The project makes use of references in function declarations. For example, look at ScenarioParser.cpp:48 and ScenarioParser.h:22
 6. The project uses smart pointers instead of raw pointers. The project does not use raw pointers. The project uses a smart pointer: unique_ptr. Check - ScenarioParser.h:58.
+
+
+
+### Appendix
+
+Useful links:
+https://pcapplusplus.github.io/docs/install
