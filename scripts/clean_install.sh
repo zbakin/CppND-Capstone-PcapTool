@@ -5,11 +5,6 @@ export WORKSPACE=/home/workspace
 apt install libpcap-dev flex libbison-dev tcpdump
 # apt install wireshark
 
-########################## SET UP GIT ############################
-git config --global user.email "zhanibek.bakin@gmail.com"
-git config --global user.name "Zhanibek Bakin"
-
-
 ################### INSTALL VCPKG and PCAPPLUSPLUS ###############
 cd $WORKSPACE
 git clone https://github.com/microsoft/vcpkg
