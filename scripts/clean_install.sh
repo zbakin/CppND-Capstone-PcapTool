@@ -1,9 +1,17 @@
 #!/bin/bash
-export WORKSPACE=/home/workspace
+
+## Validate WORKSPACE is set up
+if [ ! -d "$WORKSPACE" ]; then
+    echo "Error: WORKSPACE env variable is not set."
+    echo "Please export WORKSPACE to point to the same level as CppND-Capstone-PcapTool... Aborting"
+    exit 1
+fi
 
 ################ INSTALL DEPENDANCY LIBRARIES #####################
-apt install libpcap-dev flex libbison-dev tcpdump
-# apt install wireshark
+sudo apt install libpcap-dev
+sudo apt install flex
+sudo apt install libbison-dev
+sudo apt install tcpdump
 
 ################### INSTALL VCPKG and PCAPPLUSPLUS ###############
 cd $WORKSPACE
