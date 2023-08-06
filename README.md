@@ -52,10 +52,12 @@ Build PcapPlusPlus from sources
 
 ## Basic Build Instructions
 
-1. Clone this repo.
-2. From the top level directory run: `./scripts/clean_install.sh` to install dependancies such as libpcap and PcapPlusPlus libraries. Make sure to wait until the end of installation - about 10 min.
-3. Make a build directory in the top level directory: `mkdir build && cd build`
-4. Compile: `cmake .. && make`
+1. `export WORKSPACE=<workspace directory>`
+2. Clone this repo into workspace.
+3. `cd CppND-Capstone-PcapTool`
+4. Run: `./scripts/clean_install.sh` to install dependancies such as libpcap and PcapPlusPlus libraries. Make sure to wait until the end of installation - about 10 min.
+5. Prepare build directory `mkdir build && cd build`
+6. Compile: `cmake .. && make`
 
 ## Run app
 
